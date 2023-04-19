@@ -26,6 +26,7 @@ export default {
           "warning": "#A66908",
 
           "error": "#F33551",
+          "myColor": "#0099e5",
         },
       },
     ],

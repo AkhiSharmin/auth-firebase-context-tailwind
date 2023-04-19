@@ -1,9 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <div>
-            <h2>This is header</h2>
+           <div className="navbar bg-primary text-white font-semibold">
+                <a className="btn btn-ghost normal-case text-xl">Auth-FireBase</a>
+                <Link className="btn btn-ghost normal-case text-xl" to='/'>Home</Link>
+                <Link className="btn btn-ghost normal-case text-xl" to='/login'>Login</Link>
+                <Link className="btn btn-ghost normal-case text-xl" to='/register'>Register</Link>
+            </div>
         </div>
     );
 };
