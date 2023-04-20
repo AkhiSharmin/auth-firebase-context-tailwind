@@ -4,7 +4,13 @@ import { AuthContext } from '../providers/AuthProviders';
 
 const Header = () => {
 
-    const {} = useContext(AuthContext)
+    const { user, LogOut } = useContext(AuthContext)
+
+    const handelLogOut = () => {
+        LogOut()
+        .then(() => { })
+        .catch(error => console.error(error))
+    }
 
     return (
         <div>
@@ -13,6 +19,12 @@ const Header = () => {
                 <Link className="btn btn-ghost normal-case text-xl" to='/'>Home</Link>
                 <Link className="btn btn-ghost normal-case text-xl" to='/login'>Login</Link>
                 <Link className="btn btn-ghost normal-case text-xl" to='/register'>Register</Link>
+                {
+                    user ? <>
+                        <span>{user.email}</span> : <button 
+                        onClick={handelLogOut} className="btn btn-xs">Sing Out</button>
+                    </> : <Link to='/login'>Login</Link>
+                }
             </div>
         </div>
     );
