@@ -12,6 +12,8 @@ const AuthProviders = ({children}) => {
 
     const [user, setUser] = useState(null)
 
+    const [loading, setLoading] = useState(true)
+
     const createUser = (email,password) => {
         return createUserWithEmailAndPassword(auth,email,password)
     }
@@ -30,6 +32,7 @@ const AuthProviders = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser =>{
             console.log('auth state change', currentUser)
             setUser(currentUser)
+            setLoading(false)
         })
 
         return () => {
@@ -40,6 +43,7 @@ const AuthProviders = ({children}) => {
 
     const authInfo = {
         user,
+        loading,
         createUser,
         singIn,
         LogOut
